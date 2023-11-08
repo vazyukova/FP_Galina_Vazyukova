@@ -33,7 +33,7 @@ let onClickOperation = function() { // when we click on an operation
   }
   ex = ex.toString().replace(/=/, '');
   if (ex.match(/\/|\*|\+|-|=/)) {
-    ex = eval(ex).toString();
+    ex = calcFunc(ex).toString();
   } 
   expression.innerHTML = expression.innerHTML.replace(/=/, '') + this.id;
   ex += this.id;
@@ -81,7 +81,7 @@ backspace.addEventListener('click', () => {
 
 changeSign.addEventListener('click', () => {
     var tempres = result.innerHTML;
-    result.innerHTML = "-" + result.innerHTML
+    result.innerHTML = "(-" + result.innerHTML + ")"
 
     expression.innerHTML = expression.innerHTML.replace(new RegExp(tempres + '$'), result.innerHTML)
     ex = ex.replace(new RegExp(tempres + '$'), result.innerHTML)
@@ -116,7 +116,7 @@ equals.addEventListener('click', ()=> {
   if (!ex) {
     result.innerHTML = '0';
   } else {
-    ex = eval(ex);
+    ex = calcFunc(ex);
     expression.innerHTML += '=';
     result.innerHTML = trim12(ex);
   }
@@ -140,4 +140,68 @@ function trim12(arg) { // if we calculate a number that's too long
   } else {
     return arg;
   }
+}
+
+const actions = {
+  multiplication: {
+    value: '*',
+    label: 'multiplication',
+    func: (a,b) => (parseInt(a) * parseInt(b))
+  },
+  division: {
+    value: '/',
+    label: 'division',
+    func: (a,b) => (a / b)
+  },
+  addition: {
+    value: '+',
+    label: 'addintion',
+    func: (a,b) => (parseInt(a) + parseInt(b))
+  },
+  subtraction: {
+    value: '-',
+    label: 'subtraction',
+    func: (a,b) => (parseInt(a) - parseInt(b))
+  }
+}
+
+function calcFunc(ex) {
+  const res = parseBrackets(ex);
+  return res;
+}
+
+function parseBrackets(str) {
+  const out = str.match(/\((.*)\)/);
+  if (out) {
+    const expResult = parseBrackets(out[1]);
+    str = str.replace(out[0], expResult);
+    return calcExpr(str);
+  } else {
+    return calcExpr(str);
+  }
+}
+
+function calcExpr(str) {
+  let res;
+  Object.keys(actions).map(function(type) {
+    res = parseExpr(str, actions[type]);
+    if (res) {
+      str = str.replace(res.str, res.value.toString());
+      str = calcExpr(str);
+    }
+  });
+  return str;
+}
+ 
+function parseExpr(str, action) {
+  const reg = new RegExp(`((-?\\d+)\\s*\\${action.value}\\s*(-?\\d+))`);
+  const out = str.match(reg);
+  if (!out) return false;
+  
+  const result = {
+    str: out[1]
+  };
+  
+  result.value = action.func(out[2], out[3]);
+  return result;
 }
