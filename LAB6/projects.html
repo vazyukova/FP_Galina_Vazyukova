@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru" manifest="about_company.appcache">
+  <head>
+    <title>Название документа</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="menu-container">
+            <img class="center-horizontal logo" src="img/logo.svg"/>
+            <nav class="menu center-horizontal">
+                <ul>
+                    <a href="dashboard.html">
+                        <li class="menu-item">
+                            <img class="icon center-vertical" src="img/dashboard.svg"/>
+                            <span class="center-vertical">Статистика</span>
+                        </li>
+                    </a>
+                    <a href="plans.html">
+                        <li class="menu-item">
+                            <img class="icon center-vertical" src="img/plans.svg"/>
+                            <span class="center-vertical">Планы</span>
+                        </li>
+                    </a>
+                    <a>
+                        <li class="menu-item selected">
+                            <img class="icon center-vertical" src="img/projects.svg"/>
+                            <span class="center-vertical">Проекты</span>
+                        </li>
+                    </a>
+                    <a>
+                        <li class="menu-item">
+                            <img class="icon center-vertical" src="img/tasks.svg"/>
+                            <span class="center-vertical">Задачи</span>
+                        </li>
+                    </a>
+                    <a>
+                        <li class="menu-item">
+                            <img class="icon center-vertical" src="img/notifications.svg"/>
+                            <span class="center-vertical">Уведомления</span>
+                        </li>
+                    </a>
+                    <a>
+                        <li class="menu-item">
+                            <img class="icon center-vertical" src="img/settings.svg"/>
+                            <span class="center-vertical">Настройки</span>
+                        </li>
+                    </a>
+                </ul>
+            </nav>
+            <div class="profile-menu">
+                <div class="center-horizontal" style="display: flex;">
+                    <img class="center-vertical avatar" src="img/avatar.svg"/>
+                    <span class="center-vertical">Вазюкова Галина</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header-with-button">
+                <h1>Мои проекты</h1>
+                <button class="big-button open-popup">Запросить пользователя</button>
+            </div>
+            <div class="projects-content">
+                <table class="main-table">
+                    <thead>
+                      <tr>
+                        <th>Название проекта</th>
+                        <th>Ответственный</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>The table body</td>
+                        <td>with two columns</td>
+                      </tr>
+                      <tr>
+                        <td>The table body</td>
+                        <td>with two columns</td>
+                      </tr>
+                      <tr>
+                        <td>The table body</td>
+                        <td>with two columns</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            </div>
+        </div>
+        <div class="popup__bg"> 
+            <form class="popup">
+                <h3>Создание пользователя</h3>
+                <img src="img/close.svg" class="close-popup">
+                <div class="mb-10">
+                    <div class="label__text">
+                        Имя <span class="red">*</span>
+                    </div>
+                    <input type="text" id="name" name="name" autocomplete="off">
+                    <div id="name-error" class="red"></div>
+                </div>
+                <div class="mb-10">
+                    <div class="label__text">
+                        Фамилия <span class="red">*</span>
+                    </div>
+                    <input type="text" id="surname" name="surname" autocomplete="off">
+                    <div id="surname-error" class="red"></div>
+                </div>
+                <div class="mb-10">
+                    <div class="label__text">
+                        Email <span class="red">*</span>
+                    </div>
+                    <input type="email" id="email" name="email" autocomplete="off" placeholder="test@testmail.com">
+                    <div id="email-error" class="red"></div>
+                </div>
+                <div class="mb-10">
+                    <div class="label__text">
+                        Телефон
+                    </div>
+                    <input type="tel" id="tel" name="tel" placeholder="+X(XXX)XX-XX-XXX">
+                    <div id="tel-error" class="red"></div>
+                </div>
+                <div>
+                    <div class="label__text">
+                        Ваше сообщение <span class="red">*</span>
+                    </div>
+                    <textarea id="message" name="message"></textarea>
+                    <div id="message-error" class="red"></div>
+                </div>
+                <button class="small-button" id="submit-form">Отправить</button>
+            </form>
+        </div>
+    </div> 
+    <script src="script.js"></script>
+</body>
+</html>
