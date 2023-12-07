@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Погода</title>
+   <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <div class="container">
+    <div class="main-content">
+        <div>
+            <h1>Погода</h1>
+            <h2 id="date">6 декабря 2023</h2>
+        </div>
+        <div class="city-select">
+            <input id="city"/>
+            <button onClick="findCoordinates()">Выбрать город</button>
+        </div>
+    </div>
+    <div class="weather-container">
+        <div class="weather-element">
+            <img id="weather-icon"/>
+            <div id="temperature"></div>
+        </div>
+        
+        <div class="weather-element">
+            <div><b>Давление</b></div>
+            <div id="pressure"></div>
+        </div>
+
+        <div class="weather-element">
+            <div><b>Скорость ветра</b></div>
+            <div id="wind"></div>
+        </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+ </body>
+</html>
